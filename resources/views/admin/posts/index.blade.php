@@ -8,8 +8,13 @@
         @foreach ($posts as $post)
           
         <li>
-          <h2>Titolo : {{$post->title}}</h2>
-          <p>{{$post->content}}</p>
+          
+          <h6>Slug : {{$post->slug}}</h6>
+          <div>
+            <h2>Titolo : {{$post->title}}</h2>
+            <p> Post : {{$post->content}}</p> 
+            <hr>
+          </div>
         </li>
         @endforeach
       </ul>
