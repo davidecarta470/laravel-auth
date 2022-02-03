@@ -24,6 +24,9 @@
             <div style="display: inline-block">
               <a class="btn btn-success" href="{{route('admin.posts.create',$post)}}">CREATE</a>
             </div>
+            <div style="display: inline-block">
+              <a class="btn btn-info" href="{{route('admin.posts.edit',$post)}}">EDIT</a>
+            </div>
 
             <div style="display: inline-block">
               <form action="{{route('admin.posts.destroy',$post)}}"  method="POST" onsubmit="return confirm('confermare elimizione {{$post->title}}')">
