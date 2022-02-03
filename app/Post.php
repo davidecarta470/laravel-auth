@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $fillable = ['title','content','slug'];
     public static function generateSlug($title){
         //genero lo slag
         $slug = Str::slug($title);
