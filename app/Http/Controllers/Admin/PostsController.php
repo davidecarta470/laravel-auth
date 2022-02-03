@@ -36,7 +36,11 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+
+    $request->validate($this->generateErrorMessages()['field'],$this->generateErrorMessages()['messages']);
     $data = $request->all();
+
+    
     $new_post = new Post();
     $new_post->fill($data);
     $new_post->slug = Post::generateSlug($new_post->title);
@@ -90,5 +94,20 @@ class PostsController extends Controller
     {
         $post->delete();
         return redirect()->route('admin.posts.index')->with('deleted',"il post $post->title è stato eliminato");;
+    }
+
+    public function generateErrorMessages(){
+        return [
+            "field"=>[
+                "title"=>"required|max:100|min:2",
+                "content"=>"required"
+                ],
+            "messages"=>[
+                "title.required"=>"Il titolo è obbligatorio",
+                "title.min"=>"Il titolo deve contenere minimo :min caratteri",
+                "title.max"=>"Il titolo deve contenere massimo :max caratteri",
+                "content.required"=>"Il post è obbligatorio"
+                ]
+        ];
     }
 }
